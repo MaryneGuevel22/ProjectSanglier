@@ -1,25 +1,33 @@
+
+<div class="entete">
+    <h1>
+        <mat-label>Dr Le Sanglier</mat-label>
+    </h1>
+</div>
+
+<hr noshade style="width:300px; background-color:black; text-align:left; border:1px solid black;">
+
 <div class="list-patient">
 
-    <div class="action">
+    <form class="action">
+        <mat-form-field >
+            <input matInput type="search" placeholder="Entrez un nom !" class="search-input">
+        </mat-form-field>
+        <mat-icon class="search" (click)="search()">search</mat-icon>
+    </form>
 
+    <div class="component">
 
-        <input type="text" placeholder="Entrez un nom">
+        <div class="list">
 
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,1,200"
-            rel="stylesheet" />
+            <p>patient 1</p>
+            <p>patient 1</p>
+            <p>patient 1</p>
 
-        <span class="material-symbols-outlined">search</span>
+        </div>
 
+        <div class="detail">
+            <app-component-detail></app-component-detail>
+        </div>
     </div>
-
-    <div class="list">
-
-
-
-    </div>
-
-    <div class="detail">
-        <app-component-detail></app-component-detail>
-    </div>
-
 </div>
