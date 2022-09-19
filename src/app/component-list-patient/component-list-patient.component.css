@@ -1,0 +1,31 @@
+.action {
+    margin-left: 1%;
+    display: flex !important;
+
+}
+
+.search {
+    margin-top: 0.5%;
+}
+
+.component {
+    display: flex !important;
+}
+
+.list {
+    margin-right: 5%;
+    margin-left: 2%;
+}
+
+.detail {
+    margin-left: 22%;
+}
+
+.list-patient {
+    font-size: 15px;
+}
+
+.entete {
+    text-align: center;
+    margin-top: 2%;
+}

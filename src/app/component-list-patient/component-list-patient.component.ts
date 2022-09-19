@@ -12,4 +12,10 @@ export class ComponentListPatientComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  search() {
+
+    console.log('toto');
+
+  }
+
 }
