@@ -22,7 +22,7 @@
 
             <ul> 
                 <li *ngFor="let patient of patients" (click)="changeName(patient)" >
-                  {{ patient.name[0].family + ' ' +  patient.name[0].given}}
+                  <button mat-button> {{patient.name[0].family + ' ' +  patient.name[0].given}}</button>
                  </li>
               </ul>
 
