@@ -3,22 +3,22 @@
   <form class="detail-form-partie-une" style="margin-left: 2%;">
     <mat-form-field class="nom-patient" appearance="standard">
       <mat-label>Nom patient</mat-label>
-      <input matInput placeholder="DUPONT" value="toto" readonly>
+      <input matInput placeholder="toto" value={{patientChild.name[0].family}} readonly>
     </mat-form-field>
 
     <mat-form-field class="prenom-patient" appearance="standard">
       <mat-label>Prénom patient</mat-label>
-      <input matInput placeholder="Pierre" value="" readonly>
+      <input matInput placeholder="Pierre" value={{patientChild.name[0].given[0]}} readonly>
     </mat-form-field>
 
     <mat-form-field class="id-patient" appearance="standard">
       <mat-label>ID - NIR/INS</mat-label>
-      <input matInput placeholder="EX : 0001F" value="" readonly>
+      <input matInput placeholder="EX : 0001F" value={{patientChild.id}} readonly>
     </mat-form-field>
 
     <mat-form-field class="sexe-patient" appearance="standard">
       <mat-label>Sexe</mat-label>
-      <input matInput placeholder="F ou M" value="" readonly>
+      <input matInput placeholder="F ou M" value={{patientChild.gender}} readonly>
     </mat-form-field>
 
   </form>
@@ -26,24 +26,16 @@
   <form class="detail-form-partie-deux" style="margin-left: 2%;">
     <mat-form-field class="adresse-patient" appearance="standard">
       <mat-label>Adresse</mat-label>
-      <input matInput placeholder="DUPONT" value="toto" readonly>
+      <input matInput placeholder="DUPONT" value={{patientChild.address[0].line[0]}} readonly>
     </mat-form-field>
 
     <mat-form-field class="ville-patient" appearance="standard">
       <mat-label>Ville </mat-label>
-      <input matInput placeholder="EX : 0001F" value="" readonly>
+      <input matInput placeholder="EX : 0001F" value={{patientChild.address[0].city}} readonly>
     </mat-form-field>
-
-    <mat-form-field class="code-postal-patient" appearance="standard">
-      <mat-label>Code postal </mat-label>
-      <input matInput placeholder="Pierre" value="" readonly>
-    </mat-form-field>
-
   </form>
-
 </div>
 
 <div class="button">
-
   <button mat-flat-button color="warn" (click)="openDialog()"> Compte rendu du jj/MM/AAAA</button>
 </div>

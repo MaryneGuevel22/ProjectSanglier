@@ -12,6 +12,7 @@ import { ComponentDetailComponent } from './component-detail/component-detail.co
 import { ComponentListPatientComponent } from './component-list-patient/component-list-patient.component';
 import { DialogCompteRenduComponent } from './dialog-compte-rendu/dialog-compte-rendu.component';
 import { DialogInterpretationComponent } from './dialog-interpretation/dialog-interpretation.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DialogInterpretationComponent } from './dialog-interpretation/dialog-in
     MatIconModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
   ],
   providers: [
     { provide: MatDialogRef, useValue: {} }

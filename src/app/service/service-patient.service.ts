@@ -1,22 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
-import { Patient } from '../DTO/Patient';
-import{Http} from '@angular/http'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ServicePatientService {
+export class PatientService {
 
-  constructor(private http: Http) { }
+  constructor(private http : HttpClient) { }
 
-  getPatient():Observable<Patient>{
-
+  getPatient(): Observable<any>{
     let url="https://fhir.alliance4u.io/api/patient/632ac2df634beb001b834dd6"
-
-    return this.http.get<Patient[]>(url);
-
+    let res = this.http.get(url);
+    return res;
   }
 
-  
+  /* getPatientById(id : string): Observable<any>{
+    let url="https://fhir.alliance4u.io/api/patient/" + id
+    return this.http.get(url);
+  } */
 }

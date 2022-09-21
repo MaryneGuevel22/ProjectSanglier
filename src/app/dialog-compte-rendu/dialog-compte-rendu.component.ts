@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { DialogInterpretationComponent } from '../dialog-interpretation/dialog-interpretation.component';
+import { ServiceCompteRenduService } from '../service/service-compte-rendu.service';
 
 @Component({
   selector: 'app-dialog-compte-rendu',
@@ -9,9 +10,15 @@ import { DialogInterpretationComponent } from '../dialog-interpretation/dialog-i
 })
 export class DialogCompteRenduComponent {
 
+  compteRendu : any;
+
   constructor(
-    public dialogRef: MatDialogRef<DialogCompteRenduComponent>, public dialog: MatDialog
+    public dialogRef: MatDialogRef<DialogCompteRenduComponent>, public dialog: MatDialog, private crService : ServiceCompteRenduService
   ) { }
+
+  ngOnInit(){
+    this.compteRendu = this.crService.getCr;
+  }
 
   closeDialog(): void {
     this.dialogRef.close();

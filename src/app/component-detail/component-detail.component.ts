@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogCompteRenduComponent } from '../dialog-compte-rendu/dialog-compte-rendu.component';
 
@@ -11,7 +11,33 @@ export class ComponentDetailComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
+  @Input() 
+  patientChild = {
+    'id' : '',
+    'active' : true,
+    'name' : [{
+      'family' : '',
+      'given' : [''],
+    }],
+    'address': [
+      {
+          'use': '',
+          'line': [
+              ''
+          ],
+          'city': '',
+          'country': ''
+      }
+  ],
+    'gender' : ''
+  }
+
+
+  line = this.patientChild.address[0].line[0]??'';
+  city = this.patientChild.address[0].city??'';
+
   ngOnInit(): void {
+    console.log(this.patientChild)
   }
 
   openDialog(): void {

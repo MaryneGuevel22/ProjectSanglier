@@ -12,7 +12,7 @@
         <mat-form-field>
             <input matInput type="search" placeholder="Entrez un nom !" class="search-input">
         </mat-form-field>
-        <mat-icon class="search" (click)="search()">search</mat-icon>
+        <mat-icon class="search">search</mat-icon>
     </form>
 
 
@@ -20,12 +20,17 @@
 
         <div class="list">
 
- 
+            <ul> 
+                <li *ngFor="let patient of patients" (click)="changeName(patient)" >
+                  {{ patient.name[0].family + ' ' +  patient.name[0].given}}
+                 </li>
+              </ul>
+
 
         </div>
 
         <div class="detail">
-            <app-component-detail></app-component-detail>
+            <app-component-detail [patientChild]=patientChild></app-component-detail>
         </div>
     </div>
-</div>  
+</div>
