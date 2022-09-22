@@ -1,33 +1,32 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
 
 //Compte rendu a envoyer à l'autre équipe. 
 const crPrototype = {
-  "resourceType": "DiagnosticReport",
-  "identifier": [
+  'resourceType': 'DiagnosticReport',
+  'identifier': [
     {
-      "value": "5234342"
+      'value': '5234342'
     }
   ],
-  "status": "registered",
-  "code": [
+  'status': 'registered',
+  'code': [
     {
-      "text": "XXXX" //code rdv
+      'text': '632ad999337d8800190ca224' //code rdv
     }
   ],
-  "subject": {
-    "reference": "XXX" // ID du patient 632ac2df634beb001b834dd6
+  'subject': {
+    'reference': '632ac2df634beb001b834dd6' // ID du patient 632ac2df634beb001b834dd6
   },
-  "effectiveDateTime": "2022-09-19T11:45:33+11:00",
-  "performer": [
+  'effectiveDateTime': '2022-09-19T11:45:33+11:00',
+  'performer': [
     {
-      "display": "Dr SANGLIER pour Bigard Laboratory"
+      'display': 'Dr SANGLIER pour Bigard Laboratory'
     }
   ],
-  "conclusion": "<string>"
+  'conclusion': ''
 }
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -36,26 +35,27 @@ export class ServiceCompteRenduService {
 
   crJson = crPrototype;
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getCr(){
+  getCr() {
     return this.crJson;
   }
 
-  ajouterCommentaire(commentaire: string){
+  ajouterCommentaire(commentaire: string) {
     this.crJson.conclusion = commentaire;
   }
 
-  validerCr(){
-    this.crJson.status = "final";
+  validerCr() {
+    this.crJson.status = 'final';
   }
 
-  postCr(commentaire : string) {
+  postCr(): Observable<any> {
+    const headers = { 'content-type': 'application/json' }
+    let body = JSON.stringify(this.crJson);
 
-    let body = this.crJson;
     let url = "https://fhir.alliance4u.io/api/diagnostic-report";
-    let envoi = this.http.post(url ,body);
-    return envoi;
-  }
 
+    return this.http.post(url, body, { 'headers': headers, observe: 'response' });
+
+  }
 }

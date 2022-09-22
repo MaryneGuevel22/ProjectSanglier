@@ -32,12 +32,10 @@ export class ComponentDetailComponent implements OnInit {
     'gender' : ''
   }
 
-
-  line = this.patientChild.address[0].line[0]??'';
-  city = this.patientChild.address[0].city??'';
+  @Input() 
+  rdvChild = {"start":""}
 
   ngOnInit(): void {
-    console.log(this.patientChild)
   }
 
   openDialog(): void {

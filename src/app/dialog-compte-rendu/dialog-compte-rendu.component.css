@@ -1,3 +1,13 @@
 .dialog-action{
     direction: rtl;
 }
+
+mat-label{
+    font-size: large;
+    font-weight: bold;
+
+}
+
+input{
+    font-size: large;
+}

@@ -17,10 +17,16 @@ export class DialogCompteRenduComponent {
   ) { }
 
   ngOnInit(){
-    this.compteRendu = this.crService.getCr;
+    this.compteRendu = this.crService.getCr()
   }
 
   closeDialog(): void {
+    this.dialogRef.close();
+  }
+
+  async validerCr(){
+    this.crService.validerCr();
+    await this.crService.postCr();
     this.dialogRef.close();
   }
 

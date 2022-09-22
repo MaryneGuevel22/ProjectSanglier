@@ -8,12 +8,63 @@
         Mis en vrac comme ça sans mise en forme
     -->
 
-    <div>{{compteRendu.ress}}
+    <div class="compteRendu">
+        {{compteRendu.ress}}
+
+        <mat-label>Type de Ressource : </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.resourceType}} readonly>
+        </mat-form-field>
+
+        <br>
+
+        <mat-label>Identifiant du compte rendu: </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.identifier[0].value}} readonly>
+        </mat-form-field>
+        <br>
+
+        <mat-label>Status : </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.status}} readonly>
+        </mat-form-field>
+        <br>
+
+        <mat-label>code du rendez-vous : </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.code[0].text}} readonly>
+        </mat-form-field>
+        <br>
+        
+        <mat-label>INS du patient : </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.subject.reference}} readonly>
+        </mat-form-field>
+        <br>
+        
+        <mat-label>Date de création : </mat-label>
+        <mat-form-field>
+            <input matInput type="date" value={{compteRendu.effectiveDateTime}} readonly>
+        </mat-form-field>
+        <br>
+        
+        <mat-label>Performer : </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.performer[0].display}} readonly>
+        </mat-form-field>
+        <br>
+        
+        <mat-label>conclusion : </mat-label>
+        <mat-form-field>
+            <input matInput type="textarea" value={{compteRendu.conclusion}} readonly>
+        </mat-form-field>
+
     </div>
 
     <div class="dialog-action">
         <button mat-flat-button color="primary" (click)="closeDialog()" style="margin-left: 10pt; background-color: red;">Refuser</button>
-        <button mat-flat-button color="primary" (click)="openDialog()" style="background-color: green;">Valider</button>
+        <button mat-flat-button color="primary" (click)='validerCr()' style="background-color: green;">Valider</button>
+        <button mat-flat-button color="primary" (click)="openDialog()"  style="margin-right: 10pt;" >Commentaire </button>
     </div>
 
 </div>

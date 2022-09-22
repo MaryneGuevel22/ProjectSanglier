@@ -13,6 +13,7 @@ import { ComponentListPatientComponent } from './component-list-patient/componen
 import { DialogCompteRenduComponent } from './dialog-compte-rendu/dialog-compte-rendu.component';
 import { DialogInterpretationComponent } from './dialog-interpretation/dialog-interpretation.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ComponentAuthentificationComponent } from './component-authentification/component-authentification.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     ComponentListPatientComponent,
     DialogCompteRenduComponent,
     DialogInterpretationComponent,
+    ComponentAuthentificationComponent,
   ],
   imports: [
     BrowserModule,

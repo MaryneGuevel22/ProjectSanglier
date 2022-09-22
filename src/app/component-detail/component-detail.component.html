@@ -37,5 +37,5 @@
 </div>
 
 <div class="button">
-  <button mat-flat-button color="warn" (click)="openDialog()"> Compte rendu du jj/MM/AAAA</button>
+  <div *ngIf="rdvChild.start !== ''"><button mat-flat-button color="warn" (click)="openDialog()"> Compte rendu du {{rdvChild.start}}</button></div>
 </div>

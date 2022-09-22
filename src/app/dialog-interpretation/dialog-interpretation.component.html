@@ -6,11 +6,11 @@
     </h1>
 
     <mat-form-field class="interpretation" style="margin-top: 3%;" appearance="fill">
-        <textarea matInput placeholder="Entrez votre interprétation..."></textarea>
+        <textarea matInput placeholder="Entrez votre interprétation..." (change)="doTextareaValueChange($event)"></textarea>
       </mat-form-field>
 
     <div class="dialog-action" style="margin-top: 3%">
-        <button mat-flat-button color="primary" style="background-color: green;">Valider</button>
+        <button mat-flat-button color="primary" (click)="sendComment()" style="background-color: green;">Valider</button>
         <button mat-flat-button color="primary" (click)="closeDialog()" style="margin-left: 10pt; background-color: red;">Refuser</button>
        
     </div>

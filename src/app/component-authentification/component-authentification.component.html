@@ -1,0 +1,26 @@
+<div class="home-page">
+    <div class="authentification" *ngIf="!isClick">
+        <mat-label>Identifiant </mat-label>
+        <br>
+        <mat-form-field>
+            <input matInput type="textarea">
+        </mat-form-field>
+        <br>
+
+        <mat-label>Mot de passe </mat-label>
+        <br>
+        <mat-form-field>
+            <input matInput type="textarea">
+        </mat-form-field>
+        <br>
+
+
+        <button mat-flat-button (click)="changeComponent()" color="primary">Valider </button>
+
+    </div>
+
+    <div *ngIf="isClick">
+        <app-component-list-patient></app-component-list-patient>
+    </div>
+
+</div>

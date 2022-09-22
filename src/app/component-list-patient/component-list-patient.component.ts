@@ -13,12 +13,8 @@ export class ComponentListPatientComponent implements OnInit {
   patients : any[] = [];
   rdv : any[] = [];
 
-  otherRDV = {
-    rdv : ["13/03/2023", "14/03/2023"],
-  }
-
   otherPatient = {
-    'id' : 'totot',
+    'id' : '632ac2df633beb221b834dd6',
     'active' : true,
     'name' : [{
       'family' : 'DUPONT',
@@ -60,9 +56,19 @@ export class ComponentListPatientComponent implements OnInit {
     'gender' : ''
   }
 
+  @Input() 
+  rdvChild = {"start":""}
+
+  changeNameWithRdv(patient : any, rdv :any): void {
+    this.patientChild = patient;
+    this.rdvChild = rdv;
+    console.log("rdv")
+  }
+
   changeName(patient : any): void {
-    this.patientChild = patient
-    console.log(this.patientChild)
+    this.patientChild = patient;
+    this.rdvChild = {"start":""};
+    console.log("sans rdv")
   }
 
   constructor(private patientService: PatientService, private rendezVousService: RendezVousService) {
@@ -73,20 +79,19 @@ export class ComponentListPatientComponent implements OnInit {
      await this.patientService.getPatient().subscribe(element=>{
       this.patients.push(element);
       this.patients.push(this.otherPatient)
-      console.log(this.patients)
+
 
     });
 
-    this.rendezVousService.getRDV().subscribe(element=>{
-      this.rdv.push(element);
-      this.rdv.push(this.otherRDV)
-      console.log(this.rdv)
+   await this.rendezVousService.getRDV().subscribe(element=>{
+    console.log(element)
+      element.forEach((elem : any) => {
+        elem.start = new Date(elem.start).toLocaleDateString("fr").toString();
+      })
+    
+      this.patients[0].rdv = element;
+      this.patients[1].rdv = [];
     });
+
   }
-
-  /* search(filterValue : string): void {
-    this.patients.filter((val: Patient) => {
-      return val.name.family.toLowerCase().indexOf(filterValue) > -1;
-    });
-  } */
 }

@@ -6,31 +6,31 @@
 
 <hr noshade style="width:300px; background-color:black; text-align:left; border:1px solid black;">
 
+<br>
+
 <div class="list-patient">
-
-    <form class="action">
-        <mat-form-field>
-            <input matInput type="search" placeholder="Entrez un nom !" class="search-input">
-        </mat-form-field>
-        <mat-icon class="search">search</mat-icon>
-    </form>
-
 
     <div class="component">
 
         <div class="list">
 
             <ul> 
-                <li *ngFor="let patient of patients" (click)="changeName(patient)" >
-                  <button mat-button> {{patient.name[0].family + ' ' +  patient.name[0].given}}</button>
-                 </li>
+                <li *ngFor="let patient of patients">
+                    <button mat-button (click)="changeName(patient)"> {{patient.name[0].family + ' ' +  patient.name[0].given}}</button>
+                    <ul>
+                        <li *ngFor="let rdv of patient.rdv">
+                            <button mat-button (click)="changeNameWithRdv(patient, rdv)">{{rdv.start}}</button>
+                        </li>           
+                    </ul> 
+                </li>
               </ul>
 
 
         </div>
 
         <div class="detail">
-            <app-component-detail [patientChild]=patientChild></app-component-detail>
+            <br>
+            <app-component-detail [patientChild]=patientChild [rdvChild]=rdvChild></app-component-detail>
         </div>
     </div>
 </div>

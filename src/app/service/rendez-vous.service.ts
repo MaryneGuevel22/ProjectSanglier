@@ -11,6 +11,7 @@ export class RendezVousService {
 
    getRDV(): Observable<any>{
     let url="https://fhir.alliance4u.io/api/appointment?participant.actor.identifier.value=632ac2df634beb001b834dd6"
-    return this.http.get(url);
+    let res = this.http.get(url);
+    return res;
   }
 }

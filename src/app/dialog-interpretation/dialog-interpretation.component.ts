@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ServiceCompteRenduService } from '../service/service-compte-rendu.service';
 
 @Component({
   selector: 'app-dialog-interpretation',
@@ -8,12 +9,30 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogInterpretationComponent{
 
-  constructor(public dialogRef: MatDialogRef<DialogInterpretationComponent>) { }
+  comment = '';
+
+  constructor(private serviceCompteRenduService : ServiceCompteRenduService, public dialogRef: MatDialogRef<DialogInterpretationComponent>) { }
 
   ngOnInit(): void {
   }
 
   closeDialog(): void {
+    this.dialogRef.close();
+  }
+
+
+  doTextareaValueChange(ev:any) {
+    try {
+      this.comment = ev.target.value;
+    } catch(e) {
+      console.info('could not set textarea-value');
+    }
+  }
+
+
+  sendComment(): void {
+
+    this.serviceCompteRenduService.ajouterCommentaire(this.comment);
     this.dialogRef.close();
   }
 
